@@ -14,15 +14,15 @@
   <div class="container">
     <div class="row mt-5">
       <div class="col-md-12">
-        <form class="form">
+        <form class="form" action="/filter" method="GET">
           <div class="row">
             <div class="col">
               <div class="form-group mb-2">
                 <label for="exampleInputEmail1">Area</label>
-                <select name="area" class="form-control">
+                <select name="area_id" class="form-control">
                   <option value="">Select Area</option>
                   {{#each areas}}
-                    <option value="{{area_id}}">{{area_name}}</option>
+                    <option value="{{area_id}}" {{#equal area_id ../area}} selected {{/equal}}>{{area_name}}</option>
                   {{/each}}
                 </select>
               </div>
@@ -30,13 +30,13 @@
             <div class="col">
               <div class="form-group mx-sm-3 mb-2">
                 <label for="exampleInputEmail1">Date From</label>
-                <input type="date" name="dateFrom" class="form-control" />
+                <input type="date" name="start_date" value="{{start_date}}" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-group mx-sm-3 mb-2">
                 <label for="exampleInputEmail1">Date To</label>
-                <input type="date" name="dateTo" class="form-control" />
+                <input type="date" name="end_date" value="{{end_date}}" class="form-control" />
               </div>
             </div>
             <div class="col">
@@ -71,8 +71,8 @@
                 <thead>
                   <tr>
                     <th>Brand</th>
-                    {{#each areas}}
-                    <th>{{ area_name }}</th>
+                    {{#each labelTable}}
+                    <th>{{ this }}</th>
                     {{/each}}
                   </tr>
                 </thead>
@@ -104,7 +104,6 @@
     var ctx = document.getElementById('myChart').getContext('2d');
     var label = {{{labelAreas}}};
     var datasets = {{{datasets}}};
-    console.log(datasets);    
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
