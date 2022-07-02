@@ -17,4 +17,9 @@
 4. `npm run start`
 
 
+Hope this help.
+Thank you.
 
+Best Regards
+
+Zaenurrochman
