@@ -21,6 +21,7 @@
   "homepage": "https://github.com/rochman25/dev-test#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "hbs": "^4.2.0",
     "mysql": "^2.18.1"
